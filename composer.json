@@ -1,0 +1,22 @@
+{
+    "name": "tg/sherlock",
+    "description": "Improvments to Sherlock",
+    "keywords": ["sherlock", "elasticsearch"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Glabisch",
+            "homepage": "http://github.com/timglabisch"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "sherlock/sherlock": "~2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Tg": "src/"
+        }
+    }
+}
