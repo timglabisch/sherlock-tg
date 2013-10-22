@@ -1,6 +1,7 @@
 <?php
 
 namespace Tg\Sherlock\Request;
+use \Sherlock\requests\Command;
 
 class SearchRequest extends \Sherlock\requests\SearchRequest {
 
