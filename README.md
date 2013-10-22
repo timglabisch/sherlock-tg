@@ -4,6 +4,27 @@ Improvements to Sherlock
 Sherlock is a lib to communicate with Elasticsarch.
 This Project extends Sherlock to allow some advanced stuff.
 
+
+
+Installation
+--------
+Add this to your composer file
+```
+{
+    "require": {
+        "tg/sherlock": "master-dev"
+    },
+    "repositories": [
+        {
+            "url": "https://github.com/timglabisch/sherlock-tg.git",
+            "type": "git"
+        }
+    ]
+}
+
+```
+
+
 Raw Query Support
 --------
 
