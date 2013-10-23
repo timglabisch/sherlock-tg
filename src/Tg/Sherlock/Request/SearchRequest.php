@@ -24,6 +24,12 @@ class SearchRequest extends \Sherlock\requests\SearchRequest {
             $type = '';
         }
 
+        if (isset($this->params['endpoint'])) {
+            $endpoint = $this->params['endpoint'];
+        } else {
+            $type = '_search';
+        }
+
         if (isset($this->params['search_type'])) {
             $queryParams[] = $this->params['search_type'];
         }
@@ -41,15 +47,19 @@ class SearchRequest extends \Sherlock\requests\SearchRequest {
         $command = new Command();
         $command->index($index)
             ->type($type)
-            ->id('_search' . $queryParams)
+            ->id($this->params['endpoint'] . $queryParams)
             ->action('post')
             ->data($finalQuery);
 
         $this->batch->clearCommands();
         $this->batch->addCommand($command);
 
-        $ret = parent::execute();
+        // call the parents parent.
+        // todo: for now we use the queryReponse
+        // this force elasticsearch to have the fields "took" and "timed_out".
+        // this fields may doesnt exists for a RawResponse.
+        $ret = @\Sherlock\requests\Request::execute();
 
-        return $ret[0];
+        return $ret;
     }
 }
